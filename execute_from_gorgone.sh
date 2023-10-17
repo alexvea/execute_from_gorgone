@@ -46,7 +46,7 @@ echo "gorgone token : " $token
 sleep 2
 ## {"error":"no_log","message":"No log found for token","data":[],"token":"fd90453f9bd7bdda235293064dea10d0c456a3bffcb5ffa5f77358862bf9d3e63f24d84f1527fda143e4f8ff9c50d5a033890414b97937e17b3155442fcbe730"}
 json_result=$(get_result $token)
-while [[ $( echo "${json_result}" | grep -oP ${no_log_regex} ) ]]
+until [[ $( echo "${json_result}" | grep -oP ${stdout_regex} ) ]]
         do
         echo "no log found, waiting 2 seconds"
         sleep 2
